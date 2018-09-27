@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.*;
 // DUE HOANG
 // incomplete teleop; need lift and hook
 
-public class MyFIRSTJavaOpMode extends LinearOpMode {
+public class TeleOp extends LinearOpMode {
 	// mecanum wheels
 	private DcMotor leftFront;
 	private DcMotor rightFront;
