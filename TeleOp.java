@@ -3,21 +3,25 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.*;
 
-public class DriveTrain extends LinearOpMode {
+// DUE HOANG
+// incomplete teleop; need lift and hook
+
+public class MyFIRSTJavaOpMode extends LinearOpMode {
 	// mecanum wheels
 	private DcMotor leftFront;
 	private DcMotor rightFront;
 	private DcMotor leftBack;
 	private DcMotor rightBack;
+	private DcMotor intake; // constantly runs
+	private Servo intakeArm;
 	
 	public void runOpMode() {
-		leftFront = hardwareMap.get(DcMotor.class, "leftFront");
-		rightFront = hardwareMap.get(DcMotor.class, "rightFront");
-		leftBack = hardwareMap.get(DcMotor.class, "leftBack");
-		rightBack = hardwareMap.get(DcMotor.class, "rightBack");
-		
-		telemetry.addData("Status", "Initialized");
-		telemetry.update();
+		leftFront = hardwareMap.get(DcMotor.class, "lf");
+		rightFront = hardwareMap.get(DcMotor.class, "rf");
+		leftBack = hardwareMap.get(DcMotor.class, "lb");
+		rightBack = hardwareMap.get(DcMotor.class, "rb");
+		intake = hardwareMap.get(DcMotor.class, "is"); // intake spin
+		intakeArm = hardwareMap.get(Servo.class, "ia"); // intake arm
 		
 		telemetry.addData("Status", "Initialized");
 		telemetry.update();
@@ -43,6 +47,10 @@ public class DriveTrain extends LinearOpMode {
 			rightFront.setPower(v2);
 			leftBack.setPower(v3);
 			rightBack.setPower(v4);
+			
+			// constantly rotate the intake at full power
+			intake.setPower(1);
+			
 		}
 	}
 }
