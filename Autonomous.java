@@ -4,16 +4,18 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.*;
 
 
-public class Autonomous extends LinearOpMode {
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+@Autonomous(name="something")
+public class Auton extends LinearOpMode {
 	
-	private ColorSensor front;
+	// private ColorSensor front;
 	
 	private DcMotor leftFront;
 	private DcMotor rightFront;
 	private DcMotor leftBack;
 	private DcMotor rightBack;
-	private DcMotor intake; // constantly runs but only in teleop
-	private Servo intakeArm; // just set to 0
+	// private DcMotor intake; // constantly runs but only in teleop
+	// private Servo intakeArm; // just set to 0
 	
 	@Override
 	public void runOpMode() {
@@ -21,15 +23,15 @@ public class Autonomous extends LinearOpMode {
 		rightFront = hardwareMap.get(DcMotor.class, "rf");
 		leftBack = hardwareMap.get(DcMotor.class, "lb");
 		rightBack = hardwareMap.get(DcMotor.class, "rb");
-		front = hardwareMap.get(ColorSensor.class, "fr");
-		intake = hardwareMap.get(DcMotor.class, "is"); // intake spin
-		intakeArm = hardwareMap.get(Servo.class, "ia"); // intake arm
+		// front = hardwareMap.get(ColorSensor.class, "fr");
+		// intake = hardwareMap.get(DcMotor.class, "is"); // intake spin
+		// intakeArm = hardwareMap.get(Servo.class, "ia"); // intake arm
 		
-		intakeArm.setPosition(0);
+		// intakeArm.setPosition(0);
 		
-		front.enableLed(true);
+		// front.enableLed(true);
 		
-		while (front.alpha() < 20) {
+		while (true) {
 			double leftX = 0;
 			double leftY = 1;
 			double rightX = 0;
