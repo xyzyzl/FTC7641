@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.*;
 
 // DUE HOANG
-// incomplete teleop; need lift and hook
 
 public class TeleOp extends LinearOpMode {
 	// mecanum wheels
@@ -35,13 +34,14 @@ public class TeleOp extends LinearOpMode {
 			telemetry.addData("Status", "Running");
 			telemetry.update();
 			// move the mecanums
-			double r = Math.hypot(gamepad1.left_stick_x, gamepad1.left_stick_y);
-			double robotAngle = Math.atan2(gamepad1.left_stick_y, gamepad1.left_stick_x) - Math.PI / 4;
+			double leftX = gamepad1.left_stick_x;
+			double leftY = gamepad1.left_stick_y;
 			double rightX = gamepad1.right_stick_x;
-			final double v1 = r * Math.cos(robotAngle) + rightX;
-			final double v2 = r * Math.sin(robotAngle) - rightX;
-			final double v3 = r * Math.sin(robotAngle) + rightX;
-			final double v4 = r * Math.cos(robotAngle) - rightX;
+			
+			final double v1 = leftY-leftX + rightX;
+			final double v2 = leftY+leftX - rightX;
+			final double v3 = leftY+leftX + rightX;
+			final double v4 = leftY-leftX - rightX;
 			
 			leftFront.setPower(v1);
 			rightFront.setPower(v2);
