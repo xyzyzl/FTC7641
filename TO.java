@@ -1,11 +1,11 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.*;
 
-// DUE HOANG
-
-public class TeleOp extends LinearOpMode {
+@TeleOp
+public class TO extends LinearOpMode {
 	// mecanum wheels
 	private DcMotor leftFront;
 	private DcMotor rightFront;
@@ -20,7 +20,7 @@ public class TeleOp extends LinearOpMode {
 		leftBack = hardwareMap.get(DcMotor.class, "lb");
 		rightBack = hardwareMap.get(DcMotor.class, "rb");
 		intake = hardwareMap.get(DcMotor.class, "is"); // intake spin
-		intakeArm = hardwareMap.get(Servo.class, "ia"); // intake arm
+		intakeArm = hardwareMap.get(Servo.class, "i-+a"); // intake arm
 		
 		telemetry.addData("Status", "Initialized");
 		telemetry.update();
