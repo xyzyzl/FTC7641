@@ -12,7 +12,8 @@ public class Autonomous extends LinearOpMode {
 	private DcMotor rightFront;
 	private DcMotor leftBack;
 	private DcMotor rightBack;
-	private DcMotor intake; // constantly runs
+	private DcMotor intake; // constantly runs but only in teleop
+	private Servo intakeArm; // just set to 0
 	
 	@Override
 	public void runOpMode() {
@@ -21,17 +22,22 @@ public class Autonomous extends LinearOpMode {
 		leftBack = hardwareMap.get(DcMotor.class, "lb");
 		rightBack = hardwareMap.get(DcMotor.class, "rb");
 		front = hardwareMap.get(ColorSensor.class, "fr");
+		intake = hardwareMap.get(DcMotor.class, "is"); // intake spin
+		intakeArm = hardwareMap.get(Servo.class, "ia"); // intake arm
+		
+		intakeArm.setPosition(0);
 		
 		front.enableLed(true);
 		
 		while (front.alpha() < 20) {
-			double r = Math.hypot(1, 0);
-			double robotAngle = 0;
-			double rightX = 1;
-			final double v1 = r * Math.cos(robotAngle) + rightX;
-			final double v2 = r * Math.sin(robotAngle) - rightX;
-			final double v3 = r * Math.sin(robotAngle) + rightX;
-			final double v4 = r * Math.cos(robotAngle) - rightX;
+			double leftX = 0;
+			double leftY = 1;
+			double rightX = 0;
+			
+			final double v1 = leftY-leftX + rightX;
+			final double v2 = leftY+leftX - rightX;
+			final double v3 = leftY+leftX + rightX;
+			final double v4 = leftY-leftX - rightX;
 			
 			leftFront.setPower(v1);
 			rightFront.setPower(v2);
@@ -39,4 +45,5 @@ public class Autonomous extends LinearOpMode {
 			rightBack.setPower(v4);
 		}
 	}
+	
 }
