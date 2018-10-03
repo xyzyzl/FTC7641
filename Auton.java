@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.*;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-@Autonomous(name="something")
+@Autonomous(name="duehoang")
 public class Auton extends LinearOpMode {
 	
 	// private ColorSensor front;
@@ -44,7 +44,7 @@ public class Auton extends LinearOpMode {
 			leftFront.setPower(v1);
 			rightFront.setPower(v2);
 			leftBack.setPower(v3);
-			rightBack.setPower(v4);
+			rightBack.setPower(-v4);
 		}
 	}
 	
